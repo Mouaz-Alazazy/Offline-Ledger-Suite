@@ -1,4 +1,4 @@
-modules = ["nodejs-24"]
+modules = ["nodejs-24", "rust-stable"]
 
 [deployment]
 router = "application"
@@ -18,3 +18,7 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[nix]
+channel = "stable-25_05"
+packages = ["pkg-config", "openssl", "gtk3", "webkitgtk_4_1", "librsvg", "libayatana-appindicator", "rustup"]

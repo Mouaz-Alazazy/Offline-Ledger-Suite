@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "منظومة حساب"
+description = "An offline-first Arabic accounting and ledger app for tracking income and expenses, calculating tax, generating invoices, and exporting financial records in browser or as a lightweight desktop app."
+version = "1.0.0"
+id = "artifacts/hisab-accounting"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24023
+
+[services.development]
+run = "pnpm --filter @workspace/hisab-accounting run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hisab-accounting", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hisab-accounting/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24023"
+BASE_PATH = "/"

@@ -2,6 +2,7 @@
 
 # compiled output
 dist
+**/src-tauri/target/
 tmp
 out-tsc
 *.tsbuildinfo
